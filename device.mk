@@ -19,6 +19,9 @@ $(call inherit-product, vendor/samsung/a9y18qlte/a9y18qlte-vendor.mk)
 
 DEVICE_PATH := device/samsung/a9y18qlte
 
+# Audio
+TARGET_EXCLUDES_AUDIOFX := true
+
 # fastbootd
 PRODUCT_PACKAGES += fastbootd
 
