@@ -22,6 +22,11 @@ DEVICE_PATH := device/samsung/a9y18qlte
 # fastbootd
 PRODUCT_PACKAGES += fastbootd
 
+# Graphics
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := 450dpi
+PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
+
 # Init
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
