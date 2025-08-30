@@ -58,3 +58,6 @@ TARGET_SOC := sdm660
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
+
+# Security
+VENDOR_SECURITY_PATCH := 2022-06-01
