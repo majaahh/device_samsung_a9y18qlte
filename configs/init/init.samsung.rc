@@ -1,0 +1,5 @@
+import /vendor/etc/init/hw/init.samsung.bsp.rc
+
+on init
+    symlink /dev/block/bootdevice/by-name/steady  /dev/block/steady
+    symlink /dev/block/bootdevice/by-name/persistent  /dev/block/persistent
