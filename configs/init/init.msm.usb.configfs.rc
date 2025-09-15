@@ -1,44 +1,3 @@
-# Copyright (c) 2016-2018, The Linux Foundation. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#
-#     * Redistributions of source code must retain the above copyright
-# 	notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above
-#	copyright notice, this list of conditions and the following
-#	disclaimer in the documentation and/or other materials provided
-#	with the distribution.
-#     * Neither the name of The Linux Foundation nor the names of its
-#       contributors may be used to endorse or promote products derived
-#	from this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
-# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
-# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
-# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-
-# USB compositions
-
-#on property:sys.usb.config=none && property:sys.usb.configfs=1
-#    rm /config/usb_gadget/g1/configs/b.1/f1
-#    rm /config/usb_gadget/g1/configs/b.1/f2
-#    rm /config/usb_gadget/g1/configs/b.1/f3
-#    rm /config/usb_gadget/g1/configs/b.1/f4
-#    rm /config/usb_gadget/g1/configs/b.1/f5
-#    rm /config/usb_gadget/g1/configs/b.1/f6
-#    rm /config/usb_gadget/g1/configs/b.1/f7
-#    rm /config/usb_gadget/g1/configs/b.1/f8
-#    rm /config/usb_gadget/g1/configs/b.1/f9
-
 on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"
     stop adbd
@@ -50,8 +9,6 @@ on property:sys.usb.config=none && property:sys.usb.configfs=1
     setprop sys.usb.state ${sys.usb.config}
     
 # adb only USB configuration
-# This is the fallback configuration if the
-# USB manager fails to set a standard configuration
 on property:sys.usb.config=adb && property:sys.usb.configfs=1
     start adbd
 
@@ -301,7 +258,7 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,conn_gadget,adb &
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
-#[For Smart MTP CHN
+# For Smart MTP CHN
 on property:sys.usb.config=mtp,categories && property:sys.usb.configfs=1
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
@@ -606,7 +563,6 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=acm,diag,adb && prope
     setprop sys.usb.state ${sys.usb.config}
 
 # For CDFS composite
-
 on property:sys.usb.config=mass_storage && property:sys.usb.configfs=1
     chown system system /config/usb_gadget/g1/functions/mass_storage.0/lun.0/file
     chmod 0660 /config/usb_gadget/g1/functions/mass_storage.0/lun.0/file
@@ -671,44 +627,6 @@ on property:sys.usb.config=askon,adb
     rm /config/usb_gadget/g1/configs/b.1/f8
     rm /config/usb_gadget/g1/configs/b.1/f9
     setprop sys.usb.state ${sys.usb.config}
-
-#on property:sys.usb.config=mass_storage && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "msc"
-#    rm /config/usb_gadget/g1/configs/b.1/f1
-#    rm /config/usb_gadget/g1/configs/b.1/f2
-#    rm /config/usb_gadget/g1/configs/b.1/f3
-#    rm /config/usb_gadget/g1/configs/b.1/f4
-#    rm /config/usb_gadget/g1/configs/b.1/f5
-#    rm /config/usb_gadget/g1/configs/b.1/f6
-#    rm /config/usb_gadget/g1/configs/b.1/f7
-#    rm /config/usb_gadget/g1/configs/b.1/f8
-#    rm /config/usb_gadget/g1/configs/b.1/f9
-#    write /config/usb_gadget/g1/idVendor 0x05C6
-#    write /config/usb_gadget/g1/idProduct 0xF000
-#    symlink /config/usb_gadget/g1/functions/mass_storage.0 /config/usb_gadget/g1/configs/b.1/f1
-#    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-#    setprop sys.usb.state ${sys.usb.config}
-
-#on property:sys.usb.config=mass_storage,adb && property:sys.usb.configfs=1
-#    start adbd
-
-#on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mass_storage,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb_msc"
-#    rm /config/usb_gadget/g1/configs/b.1/f1
-#    rm /config/usb_gadget/g1/configs/b.1/f2
-#    rm /config/usb_gadget/g1/configs/b.1/f3
-#    rm /config/usb_gadget/g1/configs/b.1/f4
-#    rm /config/usb_gadget/g1/configs/b.1/f5
-#    rm /config/usb_gadget/g1/configs/b.1/f6
-#    rm /config/usb_gadget/g1/configs/b.1/f7
-#    rm /config/usb_gadget/g1/configs/b.1/f8
-#    rm /config/usb_gadget/g1/configs/b.1/f9
-#    write /config/usb_gadget/g1/idVendor 0x05C6
-#    write /config/usb_gadget/g1/idProduct 0x9015
-#    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
-#    symlink /config/usb_gadget/g1/functions/mass_storage.0 /config/usb_gadget/g1/configs/b.1/f2
-#    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-#    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,adb && property:sys.usb.configfs=1
     start adbd
@@ -844,9 +762,6 @@ on property:sys.usb.config=rndis,sec && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g2/functions/${vendor.usb.rndis.func.name}.rndis /config/usb_gadget/g2/configs/b.1/f1
     write /config/usb_gadget/g2/UDC ${persist.vendor.usb.controller.secondary}
     setprop sys.usb.state rndis
-
-#on property:sys.usb.config=rndis,adb
-#    setprop sys.usb.config rndis,${persist.vendor.usb.config.extra},adb
 
 on property:sys.usb.config=rndis,none,adb && property:sys.usb.configfs=1
     start adbd
@@ -1160,44 +1075,6 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=rndis,diag,qdss,adb &
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f4
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
-
-#on property:sys.usb.config=ncm && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "ncm"
-#    rm /config/usb_gadget/g1/configs/b.1/f1
-#    rm /config/usb_gadget/g1/configs/b.1/f2
-#    rm /config/usb_gadget/g1/configs/b.1/f3
-#    rm /config/usb_gadget/g1/configs/b.1/f4
-#    rm /config/usb_gadget/g1/configs/b.1/f5
-#    rm /config/usb_gadget/g1/configs/b.1/f6
-#    rm /config/usb_gadget/g1/configs/b.1/f7
-#    rm /config/usb_gadget/g1/configs/b.1/f8
-#    rm /config/usb_gadget/g1/configs/b.1/f9
-#    write /config/usb_gadget/g1/idVendor 0x05C6
-#    write /config/usb_gadget/g1/idProduct 0xA4A1
-#    symlink /config/usb_gadget/g1/functions/ncm.0 /config/usb_gadget/g1/configs/b.1/f1
-#    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-#    setprop sys.usb.state ${sys.usb.config}
-
-#on property:sys.usb.config=ncm,adb && property:sys.usb.configfs=1
-#    start adbd
-
-#on property:sys.usb.ffs.ready=1 && property:sys.usb.config=ncm,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "ncm_adb"
-#    rm /config/usb_gadget/g1/configs/b.1/f1
-#    rm /config/usb_gadget/g1/configs/b.1/f2
-#    rm /config/usb_gadget/g1/configs/b.1/f3
-#    rm /config/usb_gadget/g1/configs/b.1/f4
-#    rm /config/usb_gadget/g1/configs/b.1/f5
-#    rm /config/usb_gadget/g1/configs/b.1/f6
-#    rm /config/usb_gadget/g1/configs/b.1/f7
-#    rm /config/usb_gadget/g1/configs/b.1/f8
-#    rm /config/usb_gadget/g1/configs/b.1/f9
-#    write /config/usb_gadget/g1/idVendor 0x05C6
-#    write /config/usb_gadget/g1/idProduct 0x908C
-#    symlink /config/usb_gadget/g1/functions/ncm.0 /config/usb_gadget/g1/configs/b.1/f1
-#    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
-#    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-#    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,serial_cdev && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "diag_dun"
@@ -1984,58 +1861,6 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=diag,diag_mdm,adb,cci
     symlink /config/usb_gadget/g1/functions/ccid.ccid /config/usb_gadget/g1/configs/b.1/f4
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
-
-#on property:sys.usb.config=adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee7
-
-#on property:sys.usb.config=mtp && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee1
-
-#on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee2
-
-#on property:sys.usb.config=ptp && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee5
-
-#on property:sys.usb.config=ptp,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee6
-
-#on property:sys.usb.config=accessory && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x2d00
-
-#on property:sys.usb.config=accessory,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x2d01
-
-#on property:sys.usb.config=audio_source && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x2d02
-
-#on property:sys.usb.config=audio_source,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x2d03
-
-#on property:sys.usb.config=accessory,audio_source && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x2d04
-
-#on property:sys.usb.config=accessory,audio_source,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x2d05
-
-#on property:sys.usb.config=midi && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee8
-
-#on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
-#    write /config/usb_gadget/g1/idVendor 0x18d1
-#    write /config/usb_gadget/g1/idProduct 0x4ee9
 
 on property:vendor.usb.eud=1
     write /config/usb_gadget/g1/configs/b.1/MaxPower 1
