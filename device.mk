@@ -26,7 +26,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/init/init.qcom.factory.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qcom.factory.rc \
     $(DEVICE_PATH)/configs/init/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qcom.rc \
     $(DEVICE_PATH)/configs/init/init.qcom.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qcom.usb.rc \
-    $(DEVICE_PATH)/configs/init/init.samsung.bsp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.samsung.bsp.rc \
     $(DEVICE_PATH)/configs/init/init.samsung.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.samsung.rc \
     $(DEVICE_PATH)/configs/init/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.target.rc \
     $(DEVICE_PATH)/configs/init/init.msm.usb.configfs.rc:$(TARGET_COPY_OUT_VENDOR)/vendor/etc/init.msm.usb.configfs.rc \
