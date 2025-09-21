@@ -16,7 +16,7 @@ if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 ANDROID_ROOT="${MY_DIR}/../../.."
 
 HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
-if [ ! -f "${HELPER}" ]; then
+if [[ ! -f "${HELPER}" ]]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
@@ -28,7 +28,7 @@ CLEAN_VENDOR=true
 KANG=
 SECTION=
 
-while [ "${#}" -gt 0 ]; do
+while [[ "${#}" -gt 0 ]]; do
     case "${1}" in
         -n | --no-cleanup)
             CLEAN_VENDOR=false
@@ -48,7 +48,7 @@ while [ "${#}" -gt 0 ]; do
     shift
 done
 
-if [ -z "${SRC}" ]; then
+if [[ -z "${SRC}" ]]; then
     SRC="adb"
 fi
 
