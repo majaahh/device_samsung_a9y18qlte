@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit proprietary files
+$(call inherit-product, vendor/samsung/a9y18qlte/a9y18qlte-vendor.mk)
+
 DEVICE_PATH := device/samsung/a9y18qlte
 
 # Soong namespaces

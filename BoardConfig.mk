@@ -13,3 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Inherit proprietary files
+include vendor/samsung/a9y18qlte/BoardConfigVendor.mk
