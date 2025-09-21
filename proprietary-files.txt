@@ -45,3 +45,9 @@ vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
 vendor/firmware/nfc/libpn553_fw.so
 vendor/firmware/Tfa9872.cnt
+
+# WiFi - Firmware
+vendor/firmware/wlan/qca_cld/bdwlan.bin
+vendor/firmware/wlan/qca_cld/grippower.info
+vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+vendor/firmware/wlanmdsp.mbn
