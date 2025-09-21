@@ -17,6 +17,9 @@
 # Inherit from a9y18qlte device
 $(call inherit-product, device/samsung/a9y18qlte/device.mk)
 
+# Inherit some common Lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
 # Device identifier, this must come after all inclusions
 PRODUCT_NAME := lineage_a9y18qlte
 PRODUCT_DEVICE := a9y18qlte
