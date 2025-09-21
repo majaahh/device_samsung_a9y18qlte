@@ -14,17 +14,7 @@
 # limitations under the License.
 #
 
-# Inherit from a9y18qlte device
-$(call inherit-product, device/samsung/a9y18qlte/device.mk)
+DEVICE_PATH := device/samsung/a9y18qlte
 
-# Device identifier, this must come after all inclusions
-PRODUCT_NAME := lineage_a9y18qlte
-PRODUCT_DEVICE := a9y18qlte
-PRODUCT_MANUFACTURER := samsung
-PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-A920F
-PRODUCT_SHIPPING_API_LEVEL := 29
-BOARD_SHIPPING_API_LEVEL := 26
-PRODUCT_CHARACTERISTICS := phone
-
-PRODUCT_GMS_CLIENTID_BASE := android-samsung
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
