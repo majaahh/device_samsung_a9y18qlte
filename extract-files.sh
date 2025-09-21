@@ -11,7 +11,7 @@ VENDOR=samsung
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
+[[ ! -d "${MY_DIR}" ]] && MY_DIR="${PWD}"
 
 ANDROID_ROOT="${MY_DIR}/../../.."
 
