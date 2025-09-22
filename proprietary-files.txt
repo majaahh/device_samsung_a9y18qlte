@@ -51,3 +51,9 @@ vendor/firmware/wlan/qca_cld/bdwlan.bin
 vendor/firmware/wlan/qca_cld/grippower.info
 vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 vendor/firmware/wlanmdsp.mbn
+
+# Vaultkeeper
+vendor/bin/vaultkeeperd
+vendor/etc/init/vk_qsee.rc
+vendor/lib64/libvkmanager_vendor.so
+vendor/lib64/libvkservice.so
