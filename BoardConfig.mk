@@ -31,6 +31,38 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 
+# Boot Image
+BOARD_KERNEL := SRPRI18A007
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x02000000
+BOARD_TAGS_OFFSET := 0x01e00000
+BOARD_SECOND_OFFSET := 0x00f00000
+BOARD_KERNEL_PAGESIZE := 4096
+
+BOARD_COMMON_MKBOOTIMG_ARGS := --board $(BOARD_KERNEL)
+BOARD_COMMON_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
+BOARD_COMMON_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_COMMON_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
+BOARD_COMMON_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_COMMON_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
+BOARD_COMMON_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
+
+BOARD_MKBOOTIMG_ARGS := $(BOARD_COMMON_MKBOOTIMG_ARGS)
+
+BOARD_KERNEL_CMDLINE := \
+    console=null \
+    androidboot.hardware=qcom \
+    user_debug=31 \
+    msm_rtb.filter=0x37 \
+    ehci-hcd.park=3 \
+    lpm_levels.sleep_disabled=1 \
+    sched_enable_hmp=1 \
+    sched_enable_power_aware=1 \
+    service_locator.enable=1 \
+    swiotlb=1 \
+    firmware_class.path=/vendor/firmware_mnt/image
+
 # Filesystem
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
