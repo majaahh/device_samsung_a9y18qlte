@@ -22,6 +22,15 @@ DEVICE_PATH := device/samsung/a9y18qlte
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
 
+# Display
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.mapper@3.0-impl-qti-display \
+    android.hardware.renderscript@1.0-impl \
+    libgrallocutils \
+    libgralloccore \
+    gralloc.qcom \
+    vendor.qti.hardware.display.allocator-service
+
 # fastbootd
 PRODUCT_PACKAGES += fastbootd
 
