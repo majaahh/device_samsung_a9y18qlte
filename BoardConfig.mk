@@ -65,3 +65,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 
 # Security
 VENDOR_SECURITY_PATCH := 2022-06-01
+
+# Sepolicy
+BOARD_SEPOLICY_TEE_FLAVOR := mobicore
+include device/samsung_slsi/sepolicy/sepolicy.mk
