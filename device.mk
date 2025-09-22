@@ -46,6 +46,7 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # Init
 PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/init/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/etc/fstab.qcom \
     $(DEVICE_PATH)/configs/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
     $(DEVICE_PATH)/configs/init/init.a9y18qlte.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.a9y18qlte.rc \
     $(DEVICE_PATH)/configs/init/init.qcom.factory.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qcom.factory.rc \
