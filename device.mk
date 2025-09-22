@@ -34,6 +34,11 @@ PRODUCT_PACKAGES += \
 # fastbootd
 PRODUCT_PACKAGES += fastbootd
 
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
+
 # Graphics
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 450dpi
